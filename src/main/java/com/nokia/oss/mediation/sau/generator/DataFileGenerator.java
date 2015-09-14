@@ -18,6 +18,7 @@ public class DataFileGenerator
 
     public static final String DATA_FILE = "D:\\data\\saudata.txt";
 
+
     private static String generateData( int length )
     {
         Random random = new Random();
@@ -30,14 +31,14 @@ public class DataFileGenerator
     }
 
 
-    private static void generateDataFile() throws IOException
+    private static void generateDataFile( int count, String output ) throws IOException
     {
 
-        PrintWriter writer = new PrintWriter( new FileWriter( DATA_FILE ) );
+        PrintWriter writer = new PrintWriter( new FileWriter( output ) );
 
-        for( int i = 0; i < PAIR_LENGTH; i++ )
+        for( int i = 0; i < count; i++ )
         {
-            writer.println( generateData(IMSI_LENGTH) + " " + generateData(MSISDN_LENGTH ));
+            writer.println( generateData( IMSI_LENGTH ) + " " + generateData( MSISDN_LENGTH ) );
         }
 
         writer.close();
@@ -48,7 +49,7 @@ public class DataFileGenerator
     {
         try
         {
-           generateDataFile();
+            generateDataFile( Integer.parseInt( args[0] ), args[1] );
         }
         catch( IOException e )
         {
